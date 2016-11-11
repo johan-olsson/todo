@@ -1,0 +1,171 @@
+@ink-blue: #281FA9; // Used for the tasks entries & strikethrough
+@light-blue: #CDE5FF; // Used to visually separate the tasks
+@white: #FFFFFF; // Used for the background of the results & header foreground color (Text / Icons)
+@dark-white: #EEEEEE; // Used for the background
+@light-grey: #AAAAAA; // Used as the New-task field’s placeholder text color, inactive page indicators & inactive filters
+@grey: #838383; // Used as the color for the active page indicator & filter
+@dark-grey: #3B4448; // Header background color
+@dim-red: #FFBEBF; // Page margin separator
+@black: #000000; // Used for shadows (a change in the opacity may be applied)
+@body-background: #EDEDED;
+
+.gradient () {
+  background: -moz-linear-gradient(right, #ffffff 60px, @dim-red 60px, @dim-red 62px, #ffffff 62px);
+  background: -webkit-linear-gradient(right, #ffffff 60px, @dim-red 60px, @dim-red 62px, #ffffff 62px);
+  background: linear-gradient(to right, #ffffff 60px, @dim-red 60px, @dim-red 62px, #ffffff 62px);
+  background-color: @white;
+  background-size: 62px 62px;
+  background-repeat: no-repeat;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: @body-background;
+}
+
+#container {
+  margin: 10px auto;
+  max-width: 750px;
+  position: relative;
+
+  .pagination {
+    list-style: none;
+    text-align: right;
+    right: 0;
+    position: absolute;
+    padding: 10px;
+
+    li {
+      margin: 24px 5px;
+      display: inline-block;
+      font-family: 'FontAwesome';
+      font-size: 1em;
+      color: @light-grey;
+      cursor: pointer;
+      &.fa-circle {
+        color: @grey;
+      }
+    }
+  }
+
+  .filters {
+    list-style: none;
+    margin: 24px 5px;
+    position: absolute;
+    li {
+      display: inline-block;
+      padding: 10px;
+      font-family: 'Lato';
+      font-weight: bold;
+      font-size: 1em;
+      color: @light-grey;
+      cursor: pointer;
+      &.active {
+        color: @grey;
+      }
+    }
+  }
+
+  .list-container {
+    box-shadow: -4px 10px 20px rgba(0, 0, 0, 0.3);
+    position: relative;
+
+    h3 {
+      border-radius: 10px 10px 0 0;
+      background: @dark-grey;
+      font-family: 'Lato';
+      font-size: 1.250em;
+      font-weight: bold;
+      color: @white;
+      height: 52px;
+      line-height: 52px;
+      padding: 0 20px;
+      input {
+        width: 98%;
+        background: @dark-grey;
+        font-family: 'Lato';
+        font-size: 1.250em;
+        font-weight: bold;
+        color: @white;
+        height: 52px;
+        line-height: 52px;
+        outline: none;
+        border: none;
+      }
+    }
+
+    span.search-button {
+      font-family: 'FontAwesome';
+      font-size: 1.313em;
+      position: absolute;
+      right: 16px;
+      color: @white;
+      top: 16px;
+    }
+
+    ul.task-list {
+      list-style: none;
+      position: relative;
+
+      lh,
+      li {
+        height: 50px;
+        padding-left: 80px;
+        line-height: 50px;
+        display: block;
+        .gradient();
+      }
+
+      &:before {
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4) inset;
+        content: '';
+        position: absolute;
+        display: block;
+        height: 4px;
+        width: 99%;
+        left: 0.5%;
+        bottom: -4px;
+        .gradient();
+      }
+
+      &:after {
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4) inset;
+        content: '';
+        position: absolute;
+        display: block;
+        height: 4px;
+        width: 98%;
+        left: 1%;
+        bottom: -8px;
+        .gradient();
+      }
+
+      lh {
+        input {
+          font-family: 'Lato';
+          font-size: 1.250em;
+          color: @light-grey;
+          border: none;
+          width: 97%;
+          outline: none;
+        }
+      }
+
+      li {
+        border-top: 2px solid @light-blue;
+        font-family: 'Covered By Your Grace';
+        font-size: 1.688em;
+        color: @ink-blue;
+        cursor: pointer;
+        &.done {
+          text-decoration: line-through;
+        }
+      }
+    }
+  }
+}
