@@ -1,12 +1,11 @@
 export function fetchTasks() {
 
-  var tasks = []
+  var tasks = JSON.parse(localStorage.getItem('tasks'))
 
-  try {
-    tasks = JSON.parse(localStorage.getItem('tasks'))
-  } catch (e) {
-    localStorage.setItem('tasks', JSON.stringify(tasks))
-  }
+  if (!tasks)
+    tasks = [];
+
+  localStorage.setItem('tasks', JSON.stringify(tasks))
 
   return {
     type: 'FETCH_TASKS',
